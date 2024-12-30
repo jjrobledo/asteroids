@@ -3,6 +3,8 @@ from constants import *
 
 def main():
     pygame.init()
+    dt = 0
+    clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     print(f"Starting asteroids!\nScreen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}")
 
@@ -13,6 +15,9 @@ def main():
 
         screen.fill((0, 0, 0))
         pygame.display.flip()
+
+        # framerate = 60 FPS
+        dt = clock.tick(60) / 1000.0
 
 
 
