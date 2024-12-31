@@ -14,6 +14,8 @@ def main():
     dt = 0
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    score = 0
+    lives = 3
     print(f"Starting asteroids!\nScreen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}")
 
     updatable = pygame.sprite.Group()
@@ -40,12 +42,24 @@ def main():
         for asteroid in asteroids:
             for shot in shots:
                 if asteroid.check_collision(shot):
+                    score += 10
+                    print(f"Score: {score}")
                     asteroid.split()
                     shot.kill()
 
             if asteroid.check_collision(player):
-                print("Game Over!")
-                sys.exit()
+                player.kill()
+                lives -= 1
+                player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+                updatable.add(player)
+                drawable.add(player)
+                print(f"Lives: {lives}")
+                print("You Died")
+
+                if lives == 0:
+                    print("Game Over!")
+                    sys.exit()
+
 
         screen.fill((0, 0, 0))
 
