@@ -64,14 +64,19 @@ def main():
                     sys.exit()
 
         score_text = f"Score: {score}"
-        text_surface = my_font.render(score_text, True, (255, 255, 255))
+        score_text_surface = my_font.render(score_text, True, (255, 255, 255))
+
+        lives_text = f"{lives * "▲ "}"
+        lives_text_surface = my_font.render(lives_text, True, (255, 255, 255))
+
 
         screen.fill((0, 0, 0))
 
         for obj in drawable:
             obj.draw(screen)
 
-        screen.blit(text_surface, (20,20))
+        screen.blit(score_text_surface, (20,20))
+        screen.blit(lives_text_surface, (20,SCREEN_HEIGHT - lives_text_surface.get_height() - 20))
 
         pygame.display.flip()
 
