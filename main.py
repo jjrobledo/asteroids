@@ -14,8 +14,11 @@ def main():
     dt = 0
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    pygame.font.init()
+    my_font = pygame.font.SysFont("monospace", 40)
     score = 0
     lives = 3
+
     print(f"Starting asteroids!\nScreen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}")
 
     updatable = pygame.sprite.Group()
@@ -60,14 +63,17 @@ def main():
                     print("Game Over!")
                     sys.exit()
 
+        score_text = f"Score: {score}"
+        text_surface = my_font.render(score_text, True, (255, 255, 255))
 
         screen.fill((0, 0, 0))
 
         for obj in drawable:
             obj.draw(screen)
 
-        pygame.display.flip()
+        screen.blit(text_surface, (20,20))
 
+        pygame.display.flip()
 
 
         # framerate = 60 FPS
