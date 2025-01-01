@@ -3,8 +3,6 @@
 ## Tasks
 
 # Open
-- [ ] Display score on the screen
-- [ ] Display lives on the screen
 - [ ] Modify player movement - player should have momentum/drift
 - [ ] Modify player movement - player should accelerate the longer the press a direction button
 - [ ] Asteroids should have irregular polygon shape - not be a circle
@@ -14,4 +12,6 @@
 - [ ] Add sounds
 
 # Done
-
+- [x] Display score on the screen
+- [x] Display lives on the screen
+- [x] Update game to track state if game active or game over
